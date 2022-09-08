@@ -1,0 +1,25 @@
+<html>
+
+<head>
+  <meta http-equiv="refresh" content="1">
+</head>
+
+<body>
+  <div>
+    <form method="POST">
+      {% csrf_token %}
+      <button type="submit">Go get the charts</button>
+    </form>
+  </div>
+  <div>
+    <ul>
+      {% for rank in chart_ranks %}
+      <li>
+        <b>{{ rank.country_code }}</b> &mdash; #{{ rank.position }} &mdash;<i>{{ rank.itunes_id }}</i>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</body>
+
+</html>

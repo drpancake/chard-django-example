@@ -8,12 +8,9 @@ from .models import ChartRank
 
 @chard.task
 async def get_itunes_charts(country_code):
-    print(f"get_itunes_charts() START -- {country_code=}")
-
-    itunes_country_code = "gb"
     url = (
         "https://itunes.apple.com/WebObjects/MZStoreServices.woa/ws/"
-        f"charts?cc={itunes_country_code}&name=Podcasts&limit=100"
+        f"charts?cc={country_code}&name=Podcasts&limit=100"
     )
     async with httpx.AsyncClient() as client:
         resp = await client.get(url)
@@ -22,5 +19,3 @@ async def get_itunes_charts(country_code):
         await sync_to_async(ChartRank.objects.create)(
             itunes_id=itunes_id, position=i + 1, country_code=country_code
         )
-
-    print(f"get_itunes_charts() END -- {country_code=}")

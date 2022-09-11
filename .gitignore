@@ -92,3 +92,4 @@ ENV/
 .DS_Store
 .sass-output
 .vscode
+*.sqlite3

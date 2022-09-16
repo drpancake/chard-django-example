@@ -2,4 +2,4 @@ ipython
 flake8
 Django==4.1.1
 httpx==0.23.0
-django-chard==0.1.1
+django-chard==0.2
